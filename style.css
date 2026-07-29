@@ -1,12 +1,309 @@
+:root {
+    --primary: #1b4d3e;
+    --secondary: #2e7d32;
+    --accent: #81c784;
+    --dark: #212529;
+    --light: #f4f7f5;
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #e8f5e9; 
-    font-family: sans-serif;
-    color: #1b5e20;
-    margin: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--dark);
+    background-color: var(--light);
+    line-height: 1.6;
 }
 
-h1 {
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-menu a:hover {
+    color: var(--secondary);
+}
+
+.hero {
+    background: linear-gradient(135deg, rgba(27,77,62,0.95) 0%, rgba(46,125,50,0.85) 100%);
+    color: var(--white);
+    padding: 90px 0;
     text-align: center;
-    color: #2e7d32;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 750px;
+    margin: 0 auto 25px;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--primary);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--light);
+}
+
+section {
+    padding: 70px 0;
+}
+
+.section-white {
+    background-color: var(--white);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #666;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-top: 5px solid var(--secondary);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.alert-card {
+    background-color: #fff5f5;
+    border-left: 5px solid #e53935;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.alert-card h3 {
+    color: #c62828;
+    margin-bottom: 10px;
+}
+
+/* --- FLASHCARDS 3D --- */
+.flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.flashcard {
+    background-color: transparent;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg) !important;
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.flashcard-front {
+    background-color: var(--light);
+    border: 2px solid var(--accent);
+    color: var(--primary);
+}
+
+.card-hint {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.flashcard-back {
+    background-color: var(--white);
+    color: var(--dark);
+    transform: rotateY(180deg);
+    border: 2px solid var(--secondary);
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* --- FORMULÁRIO DE CONTATO --- */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+}
