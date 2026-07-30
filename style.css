@@ -3,7 +3,7 @@
     --deep-text: #132a13;
     --light-green: #a3d9a5;
     --pastel-green: #e8f5e9;
-    --earth-accent: #6b4226; /* Usado APENAS em detalhes/bordas */
+    --earth-accent: #6b4226; /* Usado apenas em detalhes decorativos */
     --off-white: #f8f9fa;
     --white: #ffffff;
     --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
@@ -25,7 +25,7 @@ html {
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--off-white);
-    color: var(--deep-text); /* Texto bem escuro para leitura perfeita */
+    color: var(--deep-text);
     line-height: 1.7;
     overflow-x: hidden;
 }
@@ -66,7 +66,7 @@ header {
 
 .brand span {
     color: var(--dark-green);
-    border-bottom: 3px solid var(--earth-accent); /* Detalhe marrom */
+    border-bottom: 3px solid var(--earth-accent);
 }
 
 .nav-links {
@@ -108,7 +108,7 @@ header {
     font-size: 0.85rem;
     font-weight: 700;
     margin-bottom: 18px;
-    border-left: 4px solid var(--earth-accent); /* Detalhe marrom */
+    border-left: 4px solid var(--earth-accent);
 }
 
 .hero h1 {
@@ -130,7 +130,7 @@ header {
     padding: 35px;
     border-radius: var(--radius);
     box-shadow: var(--shadow-hover);
-    border-top: 6px solid var(--earth-accent); /* Detalhe marrom */
+    border-top: 6px solid var(--earth-accent);
 }
 
 .hero-card-preview h3 {
@@ -143,7 +143,7 @@ header {
     color: var(--white);
 }
 
-/* SEÇÕES */
+/* SEÇÕES GERAIS */
 section {
     padding: 80px 0;
 }
@@ -160,7 +160,7 @@ section {
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 2px;
-    border-bottom: 2px solid var(--earth-accent); /* Detalhe marrom */
+    border-bottom: 2px solid var(--earth-accent);
     padding-bottom: 2px;
 }
 
@@ -204,21 +204,21 @@ section {
     margin: 8px 0;
 }
 
-/* IMPACTOS */
+/* --- SEÇÃO COM FUNDO ESCURO (LETRAS BRANCAS FORÇADAS) --- */
 .impacts-wrapper {
     background-color: var(--dark-green);
-    color: var(--white);
+    color: #ffffff !important;
     border-radius: var(--radius);
     padding: 50px;
-    border-left: 8px solid var(--earth-accent); /* Detalhe marrom */
+    border-left: 8px solid var(--earth-accent);
 }
 
-.impacts-wrapper .section-header h2 {
-    color: var(--white);
-}
-
-.dark-tag {
-    color: var(--light-green) !important;
+.impacts-wrapper h2,
+.impacts-wrapper h3,
+.impacts-wrapper p,
+.impacts-wrapper .tagline,
+.impacts-wrapper .dark-tag {
+    color: #ffffff !important;
 }
 
 .impacts-grid {
@@ -228,19 +228,15 @@ section {
 }
 
 .impact-box {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 25px;
     border-radius: 12px;
 }
 
-.impact-box h3 {
-    color: var(--light-green);
-    margin-bottom: 10px;
-}
-
+.impact-box h3,
 .impact-box p {
-    color: var(--white);
+    color: #ffffff !important;
 }
 
 /* TECNOLOGIAS E FLASHCARDS */
@@ -308,7 +304,7 @@ section {
 .card-front {
     background-color: var(--white);
     border: 2px solid var(--pastel-green);
-    border-bottom: 5px solid var(--earth-accent); /* Detalhe marrom */
+    border-bottom: 5px solid var(--earth-accent);
 }
 
 .card-front h3 {
@@ -326,10 +322,16 @@ section {
     font-weight: 700;
 }
 
+/* VERSO DO FLASHCARD COM LETRAS BRANCAS */
 .card-back {
     background-color: var(--dark-green);
-    color: var(--white);
+    color: #ffffff !important;
     transform: rotateY(180deg);
+}
+
+.card-back h3,
+.card-back p {
+    color: #ffffff !important;
 }
 
 .card-back img {
@@ -338,11 +340,6 @@ section {
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
-}
-
-.card-back p {
-    font-size: 0.95rem;
-    color: var(--white);
 }
 
 /* PRÁTICAS */
@@ -356,7 +353,7 @@ section {
     background: var(--white);
     padding: 35px;
     border-radius: var(--radius);
-    border-top: 5px solid var(--earth-accent); /* Detalhe marrom */
+    border-top: 5px solid var(--earth-accent);
     box-shadow: var(--shadow-soft);
 }
 
@@ -417,10 +414,10 @@ section {
 }
 
 .submit-btn:hover {
-    background-color: var(--earth-accent); /* Efeito hover do botão em marrom */
+    background-color: var(--earth-accent);
 }
 
-/* ANIMAÇÃO FADE-IN REVEAL */
+/* ANIMAÇÃO FADE-IN */
 .reveal {
     opacity: 0;
     transform: translateY(25px);
@@ -434,9 +431,13 @@ section {
 
 footer {
     background-color: var(--dark-green);
-    color: var(--white);
+    color: #ffffff !important;
     text-align: center;
     padding: 30px 0;
     margin-top: 50px;
-    border-top: 4px solid var(--earth-accent); /* Detalhe marrom */
+    border-top: 4px solid var(--earth-accent);
+}
+
+footer p, footer strong {
+    color: #ffffff !important;
 }
