@@ -1,54 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- GIRO DOS FLASHCARDS --- */
-    const flashcards = document.querySelectorAll('.flashcard');
+    /* --- 1. ROTAÇÃO 3D DOS FLASHCARDS --- */
+    const cards3D = document.querySelectorAll('.card-3d');
 
-    flashcards.forEach(card => {
+    cards3D.forEach(card => {
         card.addEventListener('click', () => {
             card.classList.toggle('flipped');
         });
     });
 
-    /* --- VALIDAÇÃO DO FORMULÁRIO DE CONTATO --- */
-    const contactForm = document.querySelector('#contact-form');
+    /* --- 2. ANIMAÇÃO DE REVEAL (FADE-IN UP) AO ROLAR A PÁGINA --- */
+    const revealElements = document.querySelectorAll('.reveal');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', (event) => {
-            event.preventDefault();
+    const observerOptions = {
+        root: null,
+        threshold: 0.12
+    };
 
-            const nameInput = document.querySelector('#input-name');
-            const emailInput = document.querySelector('#input-email');
-            const messageInput = document.querySelector('#input-message');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
 
-            let isValid = true;
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
 
-            if (!nameInput || nameInput.value.trim() === '') {
-                isValid = false;
-                nameInput.style.borderColor = '#e53935';
+    /* --- 3. VALIDAÇÃO DO FORMULÁRIO DE CONTATO --- */
+    const form = document.querySelector('#contactForm');
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.querySelector('#userName');
+            const email = document.querySelector('#userEmail');
+            const message = document.querySelector('#userMessage');
+
+            let isFormValid = true;
+
+            if (!name || name.value.trim() === '') {
+                isFormValid = false;
+                name.style.borderColor = '#5c3d2e';
             } else {
-                nameInput.style.borderColor = '#ccc';
+                name.style.borderColor = '#d8f3dc';
             }
 
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailInput || !emailPattern.test(emailInput.value.trim())) {
-                isValid = false;
-                emailInput.style.borderColor = '#e53935';
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email.value.trim())) {
+                isFormValid = false;
+                email.style.borderColor = '#5c3d2e';
             } else {
-                emailInput.style.borderColor = '#ccc';
+                email.style.borderColor = '#d8f3dc';
             }
 
-            if (!messageInput || messageInput.value.trim() === '') {
-                isValid = false;
-                messageInput.style.borderColor = '#e53935';
+            if (!message || message.value.trim() === '') {
+                isFormValid = false;
+                message.style.borderColor = '#5c3d2e';
             } else {
-                messageInput.style.borderColor = '#ccc';
+                message.style.borderColor = '#d8f3dc';
             }
 
-            if (isValid) {
-                alert('Mensagem enviada com sucesso! Obrigado pelo contato.');
-                contactForm.reset();
+            if (isFormValid) {
+                alert('Mensagem enviada com sucesso! Agradecemos o seu feedback.');
+                form.reset();
             } else {
-                alert('Por favor, preencha corretamente os campos destacados em vermelho.');
+                alert('Por favor, preencha corretamente todos os campos destacados.');
             }
         });
     }
