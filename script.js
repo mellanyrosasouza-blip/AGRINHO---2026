@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- 1. ROTAÇÃO 3D DOS FLASHCARDS --- */
+    /* --- 1. GIRO DOS FLASHCARDS 3D --- */
     const cards3D = document.querySelectorAll('.card-3d');
 
     cards3D.forEach(card => {
@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* --- 2. ANIMAÇÃO DE REVEAL (FADE-IN UP) AO ROLAR A PÁGINA --- */
+    /* --- 2. ANIMAÇÃO DE REVEAL AO ROLAR A PÁGINA --- */
     const revealElements = document.querySelectorAll('.reveal');
 
     const observerOptions = {
         root: null,
-        threshold: 0.12
+        threshold: 0.1
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -45,31 +45,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!name || name.value.trim() === '') {
                 isFormValid = false;
-                name.style.borderColor = '#5c3d2e';
+                name.style.borderColor = '#d32f2f';
             } else {
-                name.style.borderColor = '#d8f3dc';
+                name.style.borderColor = '#ccc';
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!email || !emailRegex.test(email.value.trim())) {
                 isFormValid = false;
-                email.style.borderColor = '#5c3d2e';
+                email.style.borderColor = '#d32f2f';
             } else {
-                email.style.borderColor = '#d8f3dc';
+                email.style.borderColor = '#ccc';
             }
 
             if (!message || message.value.trim() === '') {
                 isFormValid = false;
-                message.style.borderColor = '#5c3d2e';
+                message.style.borderColor = '#d32f2f';
             } else {
-                message.style.borderColor = '#d8f3dc';
+                message.style.borderColor = '#ccc';
             }
 
             if (isFormValid) {
                 alert('Mensagem enviada com sucesso! Agradecemos o seu feedback.');
                 form.reset();
             } else {
-                alert('Por favor, preencha corretamente todos os campos destacados.');
+                alert('Por favor, preencha corretamente os campos destacados em vermelho.');
             }
         });
     }
